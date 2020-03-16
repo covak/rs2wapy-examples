@@ -74,7 +74,7 @@ def main():
                     print(f"'{server_name}' unranked, posting message to Discord", flush=True)
 
                     # Format our warning message.
-                    message = f"WARNING, SERVER IS UNRANKED! PLEASE SWITCH MAPS IMMEDIATLY! {role_pings}"
+                    message = f"WARNING, SERVER IS UNRANKED! PLEASE SWITCH MAPS IMMEDIATLY!v {role_pings}"
 
                     # Post the warning message to Discord.
                     webhook = DiscordWebhook(url=wh_url, content=message)
