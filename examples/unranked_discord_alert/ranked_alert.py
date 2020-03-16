@@ -44,7 +44,7 @@ PING_DISCORD_ROLES = [
 # Poll ranked status every 5 seconds.
 POLL_INTERVAL = 5
 # Alert every 5 minutes if server is unranked.
-ALERT_INTERVAL = 60 * 5
+ALERT_INTERVAL = 60 * 15
 
 
 def main():
@@ -74,7 +74,7 @@ def main():
                     print(f"'{server_name}' unranked, posting message to Discord", flush=True)
 
                     # Format our warning message.
-                    message = f"Warning, server '{server_name}' is unranked! {role_pings}"
+                    message = f"WARNING, SERVER IS UNRANKED! PLEASE SWITCH MAPS IMMEDIATLY! @Admins"
 
                     # Post the warning message to Discord.
                     webhook = DiscordWebhook(url=wh_url, content=message)
