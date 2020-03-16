@@ -5,7 +5,7 @@ from discord_webhook import DiscordWebhook
 from rs2wapy import RS2WebAdmin
 
 # Set this to True to enable this example application.
-RUN = False
+RUN = True
 
 
 def get_env_vars(pat: str) -> list:
@@ -37,7 +37,7 @@ DISCORD_WEBHOOK_URLS = get_env_vars("DISCORD_WEBHOOK_URL_#")
 # For the pings to work the role ID must be of the following format
 # <&ROLE_ID> where ROLE_ID is the role ID you copied from Discord.
 PING_DISCORD_ROLES = [
-    "<&111117777888889999>",  # Example role ping, put your real role ID(s) here!
+    "<&552280559284650016>",  # Example role ping, put your real role ID(s) here!
 ]
 
 # Poll values are in seconds.
