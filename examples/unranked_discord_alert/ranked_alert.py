@@ -44,7 +44,7 @@ PING_DISCORD_ROLES = [
 # Poll ranked status every 5 seconds.
 POLL_INTERVAL = 5
 # Alert every 5 minutes if server is unranked.
-ALERT_INTERVAL = 60 * 5
+ALERT_INTERVAL = 60 * 10
 
 
 def main():
