@@ -61,7 +61,7 @@ def main():
     
   
 switching = False
-    while True:
+while True:
         try:
             for wa, wh_url in zip(web_admins, DISCORD_WEBHOOK_URLS):
                 # Get server information from WebAdmin.
