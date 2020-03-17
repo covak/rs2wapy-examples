@@ -58,47 +58,47 @@ def main():
 
     # Setup roles we want to ping into a string.
     role_pings = " ".join(PING_DISCORD_ROLES)
-    
-  
-switching = False
-while True:
-    try:
-        for wa, wh_url in zip(web_admins, DISCORD_WEBHOOK_URLS):
-            # Get server information from WebAdmin.
-            cg = wa.get_current_game()
-            server_name = cg.info["Server Name"]
-            
-            if switching:
-                cg = wa.get_current_game()
-                if cg.info["Map"].lower() == "vnte-cuchi":
-                    print("Map changed succesfully!")
-                    switching = False
-            
-            if not cg.ranked:
-                print(f"'{server_name}' unranked, posting message to Discord", flush=True)
 
-                # Format our warning message.
-                message = f"SERVER UNRANKED, SWITCHING TO CU CHI! {role_pings}"
-                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
-                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
-                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
-                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
-                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
-                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
-                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
-                time.sleep(10)
-                wa.change_map("VNTE-Cuchi")
-                # Post the warning message to Discord.
-                webhook = DiscordWebhook(url=wh_url, content=message)
-                webhook.execute()
-                switching = True
+	switching = False
+	while True:
+	    try:
+	        for wa, wh_url in zip(web_admins, DISCORD_WEBHOOK_URLS):
+	            # Get server information from WebAdmin.
+	            cg = wa.get_current_game()
+	            server_name = cg.info["Server Name"]
+	            
+	            if switching:
+	                cg = wa.get_current_game()
+	                if cg.info["Map"].lower() == "vnte-cuchi":
+	                    print("Map changed succesfully!")
+	                    switching = False
+	            
+	            if not cg.ranked:
+	                print(f"'{server_name}' unranked, posting message to Discord", flush=True)
 
-        # Sleep so that poll is performed every POLL_INTERVAL.
-        time.sleep(POLL_INTERVAL - time.time() % POLL_INTERVAL)
+	                # Format our warning message.
+	                message = f"SERVER UNRANKED, SWITCHING TO CU CHI! {role_pings}"
+	                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+	                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+	                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+	                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+	                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+	                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+	                wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+	                time.sleep(10)
+	                wa.change_map("VNTE-Cuchi")
+	                # Post the warning message to Discord.
+	                webhook = DiscordWebhook(url=wh_url, content=message)
+	                webhook.execute()
+	                switching = True
 
-    except Exception as e:
-        print(f"error: {e}, retrying in 15 seconds")
-        time.sleep(15)
+	        # Sleep so that poll is performed every POLL_INTERVAL.
+	        time.sleep(POLL_INTERVAL - time.time() % POLL_INTERVAL)
+
+	    except Exception as e:
+	        print(f"error: {e}, retrying in 15 seconds")
+	        time.sleep(15)
+
 
 if __name__ == "__main__":
     if RUN:
