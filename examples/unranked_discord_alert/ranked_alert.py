@@ -43,10 +43,6 @@ PING_DISCORD_ROLES = [
 # Poll values are in seconds.
 # Poll ranked status every 5 seconds.
 POLL_INTERVAL = 5
-# Alert every 5 minutes if server is unranked.
-ALERT_INTERVAL = 60 * 2
-
-
 def main():
     web_admins = []
 
@@ -62,14 +58,22 @@ def main():
 
     # Setup roles we want to ping into a string.
     role_pings = " ".join(PING_DISCORD_ROLES)
-
+    
+  
+switching = False
     while True:
         try:
             for wa, wh_url in zip(web_admins, DISCORD_WEBHOOK_URLS):
                 # Get server information from WebAdmin.
                 cg = wa.get_current_game()
                 server_name = cg.info["Server Name"]
-
+                
+                if switching:
+                cg = wa.get_current_game()
+                if cg.info["Map"].lower() == "vnte-cuchi":
+                    print("Map changed succesfully!")
+                    switching = False
+                
                 if not cg.ranked:
                     print(f"'{server_name}' unranked, posting message to Discord", flush=True)
 
@@ -87,8 +91,7 @@ def main():
                     # Post the warning message to Discord.
                     webhook = DiscordWebhook(url=wh_url, content=message)
                     webhook.execute()
-
-                    time.sleep(ALERT_INTERVAL)
+                    switching = True
 
             # Sleep so that poll is performed every POLL_INTERVAL.
             time.sleep(POLL_INTERVAL - time.time() % POLL_INTERVAL)
