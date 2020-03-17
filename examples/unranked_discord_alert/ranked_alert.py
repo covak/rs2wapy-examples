@@ -75,7 +75,12 @@ def main():
 
                     # Format our warning message.
                     message = f"SERVER UNRANKED, SWITCHING TO CU CHI! {role_pings}"
-                    wa.change_map("VNTE-CuChi")
+                    time.sleep(5)
+                    wa.post_chat_message("Unranked bug happened! Changing maps!")
+                    wa.post_chat_message("Unranked bug happened! Changing maps!")
+                    wa.post_chat_message("Unranked bug happened! Changing maps!")
+                    time.sleep(5)
+                    wa.change_map("VNTE-Cuchi")
                     # Post the warning message to Discord.
                     webhook = DiscordWebhook(url=wh_url, content=message)
                     webhook.execute()
