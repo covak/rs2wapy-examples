@@ -44,7 +44,7 @@ PING_DISCORD_ROLES = [
 # Poll ranked status every 5 seconds.
 POLL_INTERVAL = 5
 # Alert every 5 minutes if server is unranked.
-ALERT_INTERVAL = 60 * 10
+ALERT_INTERVAL = 60 * 2
 
 
 def main():
@@ -75,11 +75,14 @@ def main():
 
                     # Format our warning message.
                     message = f"SERVER UNRANKED, SWITCHING TO CU CHI! {role_pings}"
-                    time.sleep(5)
-                    wa.post_chat_message("Unranked bug happened! Changing maps!")
-                    wa.post_chat_message("Unranked bug happened! Changing maps!")
-                    wa.post_chat_message("Unranked bug happened! Changing maps!")
-                    time.sleep(5)
+                    wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+                    wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+                    wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+                    wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+                    wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+                    wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+                    wa.post_chat_message("SERVER BUG! NOBODY CAN JOIN! Changing maps!")
+                    time.sleep(10)
                     wa.change_map("VNTE-Cuchi")
                     # Post the warning message to Discord.
                     webhook = DiscordWebhook(url=wh_url, content=message)
