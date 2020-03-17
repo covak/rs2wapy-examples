@@ -69,10 +69,10 @@ switching = False
                 server_name = cg.info["Server Name"]
                 
                 if switching:
-                cg = wa.get_current_game()
-                if cg.info["Map"].lower() == "vnte-cuchi":
-                    print("Map changed succesfully!")
-                    switching = False
+                    cg = wa.get_current_game()
+                    if cg.info["Map"].lower() == "vnte-cuchi":
+                        print("Map changed succesfully!")
+                        switching = False
                 
                 if not cg.ranked:
                     print(f"'{server_name}' unranked, posting message to Discord", flush=True)
