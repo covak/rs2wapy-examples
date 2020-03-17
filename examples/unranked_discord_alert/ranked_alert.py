@@ -74,7 +74,7 @@ def main():
                         print("Map changed succesfully!")
                         switching = False
                 
-                if not cg.ranked:
+                if not cg.ranked and not switching:
                     print(f"'{server_name}' unranked, posting message to Discord", flush=True)
 
                     # Format our warning message.
